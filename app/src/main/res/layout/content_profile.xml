@@ -4,12 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp"
-    android:gravity="center"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.ProfileActivity"
     tools:showIn="@layout/activity_profile">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/please_provide_your_information"
+        android:textSize="22sp" />
 
     <RadioGroup
         android:id="@+id/profile_gender_radio_group"
@@ -20,17 +28,17 @@
         android:orientation="horizontal">
 
         <RadioButton
+            android:id="@+id/male_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male"
-            android:id="@+id/male_radio_button"
+            android:text="@string/male"
             android:textSize="18sp" />
 
         <RadioButton
+            android:id="@+id/female_radio_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female"
-            android:id="@+id/female_radio_button"
+            android:text="@string/female"
             android:textSize="18sp" />
 
     </RadioGroup>
@@ -41,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
-        android:text="Algerian ?" />
+        android:text="@string/algerian" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -52,7 +60,7 @@
             android:id="@+id/bac_average_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Bac Average"
+            android:hint="@string/bac_average"
             android:inputType="numberDecimal" />
     </android.support.design.widget.TextInputLayout>
 
@@ -65,7 +73,7 @@
             android:id="@+id/bac_wilaya_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Wilaya"
+            android:hint="@string/wilaya"
             android:inputType="number" />
     </android.support.design.widget.TextInputLayout>
 
@@ -78,18 +86,16 @@
             android:id="@+id/age_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Age"
+            android:hint="@string/age"
             android:inputType="number" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
+        android:id="@+id/check_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Check"
-        android:id="@+id/check_button"
         android:layout_marginTop="16sp"
-
-        />
+        android:text="@string/check" />
 
 </LinearLayout>
