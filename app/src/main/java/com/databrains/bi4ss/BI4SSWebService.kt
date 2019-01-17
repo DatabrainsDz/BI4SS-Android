@@ -1,7 +1,10 @@
 package com.databrains.bi4ss
 
+import com.databrains.bi4ss.models.Response
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
 
 interface BI4SSWebService {
 
@@ -14,4 +17,7 @@ interface BI4SSWebService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }
+
+    @GET("studentConnection")
+    fun connect(studentId : String , currentYear : String , studyLevel : String) : Call<Response>
 }
