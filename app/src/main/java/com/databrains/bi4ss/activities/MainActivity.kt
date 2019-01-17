@@ -1,5 +1,6 @@
 package com.databrains.bi4ss.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity(), Callback<Response> {
         }
 
         profile_button.setOnClickListener {
-
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 
