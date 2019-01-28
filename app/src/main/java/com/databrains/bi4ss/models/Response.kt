@@ -1,4 +1,5 @@
 package com.databrains.bi4ss.models
 
-class Response {
-}
+import com.google.gson.annotations.SerializedName
+
+class Response(@SerializedName("scholar_year") val year: String)

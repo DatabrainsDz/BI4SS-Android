@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.Toast
 import com.databrains.bi4ss.R
 import com.databrains.bi4ss.models.Response
 import com.databrains.bi4ss.webServices.BI4SSWebService
@@ -22,12 +23,12 @@ class MainActivity : AppCompatActivity(), Callback<Response> {
         setSupportActionBar(toolbar)
 
         connect_button.setOnClickListener {
-            /*val studentId = student_id_edit_text.text.toString()
+            val studentId = student_id_edit_text.text.toString()
             val id = levels_radio_group.checkedRadioButtonId
             if (studentId.isNotEmpty()) {
                 webService.connect(studentId, getCurrentYearFromRadio(id), getLevelFromRadio(id)).enqueue(this)
-            }*/
-            startActivity(Intent(this, GeneralActivity::class.java))
+            }
+
         }
 
         profile_button.setOnClickListener {
@@ -57,6 +58,15 @@ class MainActivity : AppCompatActivity(), Callback<Response> {
     }
 
     override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
-
+        val responseTwo = response.body()
+        if (responseTwo?.year != null) {
+            val intent = Intent(this, GeneralActivity::class.java)
+            intent.putExtra(GeneralActivity.keyScholarYear, responseTwo.year)
+            intent.putExtra(GeneralActivity.keyCurrentYear, getCurrentYearFromRadio(levels_radio_group.checkedRadioButtonId))
+            intent.putExtra(GeneralActivity.keyLevel, getLevelFromRadio(levels_radio_group.checkedRadioButtonId))
+            startActivity(intent)
+        } else {
+            Toast.makeText(this, "You are not in our university.", Toast.LENGTH_LONG).show()
+        }
     }
 }

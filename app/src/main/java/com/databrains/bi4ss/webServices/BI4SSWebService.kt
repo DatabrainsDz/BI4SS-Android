@@ -13,7 +13,7 @@ interface BI4SSWebService {
 
     companion object {
         const val BASE_URL_IP = "http://192.168.43.36"
-        private const val BASE_URL = "$BASE_URL_IP/"
+        private const val BASE_URL = "$BASE_URL_IP/databrains/"
 
         val retrofit: Retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -21,8 +21,10 @@ interface BI4SSWebService {
                 .build()
     }
 
-    @GET("studentConnection")
-    fun connect(@Query("") studentId: String, currentYear: String, studyLevel: String): Call<Response>
+    @GET("Students>auth")
+    fun connect(@Query("student_id") studentId: String,
+                @Query("current_year") currentYear: String,
+                @Query("level") studyLevel: String): Call<Response>
 
     @GET("/admittedadjourned/{yearScholar}/{level}/{year}")
     fun getStatistics(@Path("yearScholar") yearScholar: String,
