@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.databrains.bi4ss.R
 import com.databrains.bi4ss.models.Prediction
 import com.databrains.bi4ss.webServices.MLWebService
+import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.content_profile.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -16,12 +17,12 @@ import retrofit2.Response
 class ProfileActivity : AppCompatActivity(), Callback<Prediction> {
 
 
-    val webService = MLWebService.retrofit.create(MLWebService::class.java)
+    private val webService = MLWebService.retrofit.create(MLWebService::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-
+        setSupportActionBar(toolbar)
         check_button.setOnClickListener {
             val bacAverage = bac_average_edit_text.text.toString()
             val wilaya = bac_wilaya_edit_text.text.toString()

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BI4SS</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_profile">Profile </string>
     <string name="wilaya">Wilaya</string>
     <string name="check">Check</string>
     <string name="age">Age</string>
