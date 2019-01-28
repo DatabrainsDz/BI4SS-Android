@@ -17,7 +17,6 @@ import com.jjoe64.graphview.series.BarGraphSeries
 import com.jjoe64.graphview.series.DataPoint
 import kotlinx.android.synthetic.main.activity_general.*
 import kotlinx.android.synthetic.main.content_general.*
-import kotlinx.android.synthetic.main.content_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -116,7 +115,7 @@ class GeneralActivity : AppCompatActivity(), Callback<StatisticsResponse> {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == R.id.association_item) {
-            val intent = Intent(this, GeneralActivity::class.java)
+            val intent = Intent(this, AssociationActivity::class.java)
             intent.putExtra(GeneralActivity.keyCurrentYear, intent.getStringExtra(keyCurrentYear))
             intent.putExtra(GeneralActivity.keyLevel, intent.getStringExtra(keyLevel))
             startActivity(intent)

@@ -42,6 +42,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.databrains.bi4ss.activities.MainActivity" />
         </activity>
+        <activity
+            android:name=".activities.AssociationActivity"
+            android:label="@string/title_activity_association"
+            android:parentActivityName=".activities.GeneralActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.databrains.bi4ss.activities.GeneralActivity" />
+        </activity>
     </application>
 
 </manifest>
