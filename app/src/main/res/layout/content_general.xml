@@ -25,18 +25,12 @@
 
 
         <com.jjoe64.graphview.GraphView
-            android:id="@+id/genderGraph"
+            android:id="@+id/genderGraphAdmitted"
             android:layout_width="match_parent"
             android:layout_height="200dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Wilaya Statistics"
-            android:textSize="20sp" />
-
         <com.jjoe64.graphview.GraphView
-            android:id="@+id/wilayaGraph"
+            android:id="@+id/genderGraphAdjourned"
             android:layout_width="match_parent"
             android:layout_height="200dp" />
 
@@ -47,7 +41,12 @@
             android:textSize="20sp" />
 
         <com.jjoe64.graphview.GraphView
-            android:id="@+id/nationalityGraph"
+            android:id="@+id/nationalityGraphAdmitted"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <com.jjoe64.graphview.GraphView
+            android:id="@+id/nationalityGraphAdjourned"
             android:layout_width="match_parent"
             android:layout_height="200dp" />
     </LinearLayout>

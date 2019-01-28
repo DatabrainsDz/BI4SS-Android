@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.databrains.bi4ss.R
 import com.jjoe64.graphview.DefaultLabelFormatter
+import com.jjoe64.graphview.GraphView
 import com.jjoe64.graphview.LegendRenderer
 import com.jjoe64.graphview.series.BarGraphSeries
 import com.jjoe64.graphview.series.DataPoint
@@ -21,49 +22,51 @@ class GeneralActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val seriesOne = BarGraphSeries<DataPoint>(arrayOf(
-                DataPoint(1.0, 20.0),
-                DataPoint(2.0, 30.0)
-        ))
+        fillGraph(genderGraphAdjourned, arrayOf(DataPoint(2.0, 40.0)),
+                arrayOf(DataPoint(3.0, 60.0)) , "Adjourned" , "Male" , "Female")
+
+        fillGraph(genderGraphAdmitted, arrayOf(DataPoint(2.0, 20.0)),
+                arrayOf(DataPoint(3.0, 80.0)) , "Admitted" , "Male" , "Female")
+
+    }
+
+    private fun fillGraph(graph: GraphView,
+                          dataOne: Array<DataPoint>,
+                          dataTwo: Array<DataPoint>,
+                          title: String,
+                          legendOne: String,
+                          legendTwo: String) {
+
+        val seriesOne = BarGraphSeries<DataPoint>(dataOne)
+        val seriesTwo = BarGraphSeries<DataPoint>(dataTwo)
 
         seriesOne.color = Color.BLUE
         seriesOne.isAnimated = true
+        seriesOne.title = legendOne
 
-        seriesOne.title = "Admitted"
-
-        val seriesTwo = BarGraphSeries<DataPoint>(
-                arrayOf(DataPoint(3.0, 40.0),
-                        DataPoint(4.0, 20.0)))
         seriesTwo.color = Color.RED
         seriesTwo.isAnimated = true
+        seriesTwo.title = legendTwo
 
-        seriesTwo.title = "Adjourned"
+        graph.addSeries(seriesOne)
+        graph.addSeries(seriesTwo)
 
-        genderGraph.addSeries(seriesOne)
-        genderGraph.addSeries(seriesTwo)
+        graph.viewport.isXAxisBoundsManual = true
+        graph.viewport.setMinX(1.0)
+        graph.viewport.setMaxX(4.0)
+        graph.viewport.isYAxisBoundsManual = true
+        graph.viewport.setMinY(0.0)
+        graph.viewport.setMaxY(graph.viewport.getMaxY(true) + 20.0)
 
-        genderGraph.viewport.isXAxisBoundsManual = true
-        genderGraph.viewport.setMinX(0.0)
-        genderGraph.viewport.setMaxX(6.0)
-
-        genderGraph.viewport.isYAxisBoundsManual = true
-        genderGraph.viewport.setMinY(0.0)
-        genderGraph.viewport.setMaxY(50.0)
-
-        genderGraph.legendRenderer.isVisible = true
-        genderGraph.legendRenderer.align = LegendRenderer.LegendAlign.TOP
-        genderGraph.gridLabelRenderer.labelFormatter = object : DefaultLabelFormatter() {
+        graph.title = title
+        graph.legendRenderer.isVisible = true
+        graph.legendRenderer.align = LegendRenderer.LegendAlign.TOP
+        graph.gridLabelRenderer.labelFormatter = object : DefaultLabelFormatter() {
             override fun formatLabel(value: Double, isValueX: Boolean): String {
-                if (isValueX) {
-                    return when (value) {
-                        1.5 -> "Male"
-                        3.5 -> "Female"
-                        else -> super.formatLabel(value, isValueX)
-                    }
-                }
+                if (isValueX) return ""
                 return super.formatLabel(value, isValueX)
             }
         }
-    }
 
+    }
 }
