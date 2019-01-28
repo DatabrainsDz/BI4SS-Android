@@ -36,7 +36,6 @@
             app:layout_constraintTop_toBottomOf="@+id/subjectTextView" />
 
         <TextView
-
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,7 +55,7 @@
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:text="LIA" />
+            tools:text="@tools:sample/cities" />
 
         <TextView
             android:id="@+id/textView3"
@@ -79,7 +78,7 @@
             android:singleLine="true"
             app:layout_constraintStart_toStartOf="@+id/textView3"
             app:layout_constraintTop_toBottomOf="@+id/textView3"
-            tools:text="LIA" />
+            tools:text="@tools:sample/full_names" />
 
     </android.support.constraint.ConstraintLayout>
 

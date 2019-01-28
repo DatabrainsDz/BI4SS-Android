@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity(), Callback<Response> {
 
     override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
         val responseTwo = response.body()
+        Log.d("Auth", responseTwo.toString())
         if (responseTwo?.year != null) {
             val intent = Intent(this, GeneralActivity::class.java)
             intent.putExtra(GeneralActivity.keyScholarYear, responseTwo.year)

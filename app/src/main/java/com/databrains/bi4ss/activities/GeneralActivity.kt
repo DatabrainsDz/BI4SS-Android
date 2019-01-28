@@ -23,17 +23,6 @@ import retrofit2.Response
 
 
 class GeneralActivity : AppCompatActivity(), Callback<StatisticsResponse> {
-    override fun onFailure(call: Call<StatisticsResponse>, t: Throwable) {
-        Log.e("Error", t.message)
-    }
-
-    override fun onResponse(call: Call<StatisticsResponse>, response: Response<StatisticsResponse>) {
-        fillGraph(genderGraphAdjourned, arrayOf(DataPoint(2.0, 40.0)),
-                arrayOf(DataPoint(3.0, 60.0)), "Adjourned", "Male", "Female")
-
-        fillGraph(genderGraphAdmitted, arrayOf(DataPoint(2.0, 20.0)),
-                arrayOf(DataPoint(3.0, 80.0)), "Admitted", "Male", "Female")
-    }
 
     companion object {
         const val keyScholarYear = "keyScholarYear"
@@ -122,5 +111,17 @@ class GeneralActivity : AppCompatActivity(), Callback<StatisticsResponse> {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResponse(call: Call<StatisticsResponse>, response: Response<StatisticsResponse>) {
+        fillGraph(genderGraphAdjourned, arrayOf(DataPoint(2.0, 40.0)),
+                arrayOf(DataPoint(3.0, 60.0)), "Adjourned", "Male", "Female")
+
+        fillGraph(genderGraphAdmitted, arrayOf(DataPoint(2.0, 20.0)),
+                arrayOf(DataPoint(3.0, 80.0)), "Admitted", "Male", "Female")
+    }
+
+    override fun onFailure(call: Call<StatisticsResponse>, t: Throwable) {
+        Log.e("Error", t.message)
     }
 }
