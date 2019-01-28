@@ -22,11 +22,12 @@ class MainActivity : AppCompatActivity(), Callback<Response> {
         setSupportActionBar(toolbar)
 
         connect_button.setOnClickListener {
-            val studentId = student_id_edit_text.text.toString()
+            /*val studentId = student_id_edit_text.text.toString()
             val id = levels_radio_group.checkedRadioButtonId
             if (studentId.isNotEmpty()) {
                 webService.connect(studentId, getCurrentYearFromRadio(id), getLevelFromRadio(id)).enqueue(this)
-            }
+            }*/
+            startActivity(Intent(this, GeneralActivity::class.java))
         }
 
         profile_button.setOnClickListener {

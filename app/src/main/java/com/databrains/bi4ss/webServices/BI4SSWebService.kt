@@ -1,7 +1,7 @@
 package com.databrains.bi4ss.webServices
 
-import com.databrains.bi4ss.models.Prediction
 import com.databrains.bi4ss.models.Response
+import com.databrains.bi4ss.models.StatisticsResponse
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -24,5 +24,9 @@ interface BI4SSWebService {
     @GET("studentConnection")
     fun connect(@Query("") studentId: String, currentYear: String, studyLevel: String): Call<Response>
 
+    @GET("/admittedadjourned/{yearScholar}/{level}/{year}")
+    fun getStatistics(@Path("yearScholar") yearScholar: String,
+                      @Path("level") level: String,
+                      @Path("year") year: String): Call<StatisticsResponse>
 
 }

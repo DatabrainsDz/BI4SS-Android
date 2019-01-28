@@ -10,5 +10,5 @@
     <string name="female">Female</string>
     <string name="male">Male</string>
     <string name="please_provide_your_information">Please Provide Your Information</string>
-    <string name="title_activity_general">GeneralActivity</string>
+    <string name="title_activity_general">General Statistics</string>
 </resources>
