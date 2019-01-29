@@ -105,8 +105,8 @@ class GeneralActivity : AppCompatActivity(), Callback<StatisticsResponse> {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == R.id.association_item) {
             val intent = Intent(this, AssociationActivity::class.java)
-            intent.putExtra(GeneralActivity.keyCurrentYear, intent.getStringExtra(keyCurrentYear))
-            intent.putExtra(GeneralActivity.keyLevel, intent.getStringExtra(keyLevel))
+            intent.putExtra(GeneralActivity.keyCurrentYear, getIntent().getStringExtra(keyCurrentYear))
+            intent.putExtra(GeneralActivity.keyLevel, getIntent().getStringExtra(keyLevel))
             startActivity(intent)
             return true
         }

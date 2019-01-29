@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.databrains.bi4ss.R
+import com.databrains.bi4ss.models.DataAssociationObject
 import com.databrains.bi4ss.models.Response
+import java.util.*
 
-class AssociationAdapter(private val data: List<Response>) : RecyclerView.Adapter<AssociationAdapter.AssociationViewHolder>() {
+class AssociationAdapter(private val data: Array<DataAssociationObject>) : RecyclerView.Adapter<AssociationAdapter.AssociationViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, poisition: Int): AssociationViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.association_item, parent, false)
@@ -18,6 +20,8 @@ class AssociationAdapter(private val data: List<Response>) : RecyclerView.Adapte
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: AssociationViewHolder, position: Int) {
+        holder.courseTextView.text= data[position].subject
+        holder.relatedCourseTextView.text= Arrays.toString(data[position].relatedTo)
 
     }
 

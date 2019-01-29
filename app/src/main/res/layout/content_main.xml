@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Student ID"
-            android:text="14010696401"
+            android:text="14010796554"
             android:inputType="number" />
     </android.support.design.widget.TextInputLayout>
 

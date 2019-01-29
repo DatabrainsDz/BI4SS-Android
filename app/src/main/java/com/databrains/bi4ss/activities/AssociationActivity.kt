@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import com.databrains.bi4ss.R
 import com.databrains.bi4ss.adapters.AssociationAdapter
+import com.databrains.bi4ss.models.AssociationJson
 import com.databrains.bi4ss.models.Response
 import com.databrains.bi4ss.webServices.BI4SSWebService
 import kotlinx.android.synthetic.main.activity_association.*
@@ -15,18 +16,27 @@ import retrofit2.Call
 import retrofit2.Callback
 
 
-class AssociationActivity : AppCompatActivity(), Callback<Response> {
-    override fun onFailure(call: Call<Response>, t: Throwable) {
-        Log.e("Error", t.localizedMessage)
+class AssociationActivity : AppCompatActivity(), Callback<AssociationJson> {
+    override fun onFailure(call: Call<AssociationJson>, t: Throwable) {
+        Log.e("Error", call.request().url().toString())
     }
 
-    override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
-        val adapter = AssociationAdapter(listOf())
-        val manager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        associationRecyclerView.layoutManager = manager
-        associationRecyclerView.adapter = adapter
-        associationProgressBar.visibility = View.GONE
-        associationRecyclerView.visibility = View.VISIBLE
+    override fun onResponse(call: Call<AssociationJson>, response: retrofit2.Response<AssociationJson>) {
+        val association = response.body()
+        Log.e("Error", association.toString())
+        if (association?.data != null) {
+            //'14010796554'
+            val adapter = AssociationAdapter(association.data)
+            val manager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+            associationRecyclerView.layoutManager = manager
+            associationRecyclerView.adapter = adapter
+            associationProgressBar.visibility = View.GONE
+            associationRecyclerView.visibility = View.VISIBLE
+
+        } else {
+            Log.e("Error", "Null association response ${call.request().url()}")
+        }
+
     }
 
     private val webService = BI4SSWebService.retrofit.create(BI4SSWebService::class.java)

@@ -1,5 +1,6 @@
 package com.databrains.bi4ss.webServices
 
+import com.databrains.bi4ss.models.AssociationJson
 import com.databrains.bi4ss.models.Response
 import com.databrains.bi4ss.models.StatisticsResponse
 import retrofit2.Call
@@ -12,7 +13,7 @@ import retrofit2.http.Query
 interface BI4SSWebService {
 
     companion object {
-        const val BASE_URL_IP = "http://192.168.43.90"
+        const val BASE_URL_IP = "http://192.168.137.224"
         private const val BASE_URL = "$BASE_URL_IP/databrains/"
 
         val retrofit: Retrofit = Retrofit.Builder()
@@ -31,8 +32,8 @@ interface BI4SSWebService {
                       @Path("level") level: String,
                       @Path("year") year: String): Call<StatisticsResponse>
 
-    @GET("/subjects/association?semester=1")
+    @GET("/databrains/subjects/association?semester=1")
     fun getAssociations(@Query("current_year") currentYear: String,
-                        @Query("level") level: String): Call<Response>
+                        @Query("level") level: String): Call<AssociationJson>
 
 }
