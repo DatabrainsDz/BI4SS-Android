@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import com.databrains.bi4ss.R
 import com.databrains.bi4ss.adapters.AssociationAdapter
@@ -52,6 +53,15 @@ class AssociationActivity : AppCompatActivity(), Callback<AssociationJson> {
         val level = intent.getStringExtra(GeneralActivity.keyLevel)
 
         webService.getAssociations(currentYear, level).enqueue(this)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item?.itemId == android.R.id.home){
+            onBackPressed()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

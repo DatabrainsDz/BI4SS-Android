@@ -10,7 +10,7 @@ import retrofit2.http.Path
 interface MLWebService {
 
     companion object {
-        const val BASE_URL_IP = "http://192.168.43.36:5000"
+        const val BASE_URL_IP = "http://172.26.0.39:5000"
         private const val BASE_URL = "$BASE_URL_IP/"
 
         val retrofit: Retrofit = Retrofit.Builder()

@@ -27,10 +27,10 @@ interface BI4SSWebService {
                 @Query("current_year") currentYear: String,
                 @Query("level") studyLevel: String): Call<Response>
 
-    @GET("/admittedadjourned/{yearScholar}/{level}/{year}")
+    @GET("admittedadjourned/{yearScholar}")
     fun getStatistics(@Path("yearScholar") yearScholar: String,
-                      @Path("level") level: String,
-                      @Path("year") year: String): Call<StatisticsResponse>
+                      @Query("level") level: String,
+                      @Query("current_year") year: String): Call<StatisticsResponse>
 
     @GET("/databrains/subjects/association?semester=1")
     fun getAssociations(@Query("current_year") currentYear: String,

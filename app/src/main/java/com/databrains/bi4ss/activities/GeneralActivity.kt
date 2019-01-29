@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.databrains.bi4ss.R
+import com.databrains.bi4ss.models.DataStats
 import com.databrains.bi4ss.models.StatisticsResponse
 import com.databrains.bi4ss.webServices.BI4SSWebService
 import com.jjoe64.graphview.DefaultLabelFormatter
@@ -44,16 +45,6 @@ class GeneralActivity : AppCompatActivity(), Callback<StatisticsResponse> {
         webService.getStatistics(scholarYear, level, currentYear).enqueue(this)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        fillGraph(genderGraphAdjourned, arrayOf(DataPoint(2.0, 40.0)),
-                arrayOf(DataPoint(3.0, 60.0)), "Adjourned", "Male", "Female")
-
-        fillGraph(genderGraphAdmitted, arrayOf(DataPoint(2.0, 20.0)),
-                arrayOf(DataPoint(3.0, 80.0)), "Admitted", "Male", "Female")
-        fillGraph(nationalityGraphAdjourned, arrayOf(DataPoint(2.0, 40.0)),
-                arrayOf(DataPoint(3.0, 60.0)), "Adjourned", "Algerian", "Others")
-
-        fillGraph(nationalityGraphAdjourned, arrayOf(DataPoint(2.0, 20.0)),
-                arrayOf(DataPoint(3.0, 80.0)), "Admitted", "Algerian", "Others")
 
     }
 
@@ -67,11 +58,11 @@ class GeneralActivity : AppCompatActivity(), Callback<StatisticsResponse> {
         val seriesOne = BarGraphSeries<DataPoint>(dataOne)
         val seriesTwo = BarGraphSeries<DataPoint>(dataTwo)
 
-        seriesOne.color = Color.BLUE
+        seriesOne.color = resources.getColor(R.color.myGreen)
         seriesOne.isAnimated = true
         seriesOne.title = legendOne
 
-        seriesTwo.color = Color.RED
+        seriesTwo.color = resources.getColor(R.color.myRed)
         seriesTwo.isAnimated = true
         seriesTwo.title = legendTwo
 
@@ -114,14 +105,47 @@ class GeneralActivity : AppCompatActivity(), Callback<StatisticsResponse> {
     }
 
     override fun onResponse(call: Call<StatisticsResponse>, response: Response<StatisticsResponse>) {
-        fillGraph(genderGraphAdjourned, arrayOf(DataPoint(2.0, 40.0)),
-                arrayOf(DataPoint(3.0, 60.0)), "Adjourned", "Male", "Female")
+        Log.e("Error", call.request().url().toString())
 
-        fillGraph(genderGraphAdmitted, arrayOf(DataPoint(2.0, 20.0)),
-                arrayOf(DataPoint(3.0, 80.0)), "Admitted", "Male", "Female")
+        val statisticsResponse =response.body()
+        if(statisticsResponse?.data!=null){
+            val femaleAdjourned = statisticsResponse.data.gender.female.ajourne.toDouble()
+            val femaleAddmitted = statisticsResponse.data.gender.female.admis.toDouble()
+            val maleAdjourned = statisticsResponse.data.gender.male.ajourne.toDouble()
+            val maleAddmitted = statisticsResponse.data.gender.male.admis.toDouble()
+            val algerienneAdmitted =statisticsResponse.data.nationality.algerienne.admis.toDouble()
+            val algeriennAdjourned =statisticsResponse.data.nationality.algerienne.ajourne.toDouble()
+            val entrangerAdmitted :Double
+            val entrangerAdjourned :Double
+            if(statisticsResponse?.data.nationality.etranger!=null) {
+                 entrangerAdmitted = statisticsResponse.data.nationality.etranger.admis?.toDouble()
+                 entrangerAdjourned = statisticsResponse.data.nationality.etranger.admis?.toDouble()
+            }else{
+                entrangerAdmitted= 0.0
+                entrangerAdjourned= 0.0
+            }
+
+
+
+            fillGraph(genderGraphAdjourned, arrayOf(DataPoint(2.0, maleAdjourned)),
+                    arrayOf(DataPoint(3.0, femaleAdjourned)), "Adjourned", "Male", "Female")
+
+            fillGraph(genderGraphAdmitted, arrayOf(DataPoint(2.0, maleAddmitted)),
+                    arrayOf(DataPoint(3.0, femaleAddmitted)), "Admitted", "Male", "Female")
+
+
+            fillGraph(nationalityGraphAdjourned, arrayOf(DataPoint(2.0, algeriennAdjourned)),
+                    arrayOf(DataPoint(3.0, entrangerAdjourned)), "Adjourned", "Algerian", "Foreign")
+
+            fillGraph(nationalityGraphAdmitted, arrayOf(DataPoint(2.0, algerienneAdmitted)),
+                    arrayOf(DataPoint(3.0, entrangerAdmitted)), "Admitted", "Algerian", "Foreign")
+
+
+        }
+
     }
 
     override fun onFailure(call: Call<StatisticsResponse>, t: Throwable) {
-        Log.e("Error", t.message)
+        Log.e("Error", call.request().url().toString())
     }
 }
