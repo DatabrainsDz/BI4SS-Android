@@ -2,10 +2,14 @@
 <resources>
     <color name="colorPrimary">#707487</color>
     <color name="colorPrimaryDark">#707487</color>
-    <color name="colorAccent">#A5D76E</color>
+    <color name="colorAccent">#FDD362</color>
     <color name="myRed">#D2555A</color>
     <color name="myGreen">#A5D76E</color>
     <color name="white">#FFFFFF</color>
     <color name="myRedTwo">#FF6464</color>
+    <color name="myBlue">#48CFB7</color>
+    <color name="myInputTextColor">#444966</color>
+    <color name="myLightBlue">#6DD7F0</color>
+
 
 </resources>

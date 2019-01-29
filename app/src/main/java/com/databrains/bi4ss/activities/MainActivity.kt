@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity(), Callback<Response> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+        //setSupportActionBar(toolbar)
 
         connect_button.setOnClickListener {
             val studentId = student_id_edit_text.text.toString()

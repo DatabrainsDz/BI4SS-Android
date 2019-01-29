@@ -22,7 +22,7 @@ class ProfileActivity : AppCompatActivity(), Callback<Prediction> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
-        setSupportActionBar(toolbar)
+        //setSupportActionBar(toolbar)
         check_button.setOnClickListener {
             val bacAverage = bac_average_edit_text.text.toString()
             val wilaya = bac_wilaya_edit_text.text.toString()
