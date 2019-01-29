@@ -1,0 +1,70 @@
+{
+  "title": "I don't know",
+  "status": 200,
+  "data": [
+    {
+      "subject": "Alg\u00e92",
+      "relatedTo": [
+        "Aly2"
+      ]
+    },
+    {
+      "subject": "CF",
+      "relatedTo": [
+        "Alg\u00e92",
+        "Aly2",
+        "Info2"
+      ]
+    },
+    {
+      "subject": "His-s",
+      "relatedTo": [
+        "Alg\u00e92",
+        "Aly2",
+        "CF",
+        "Info2",
+        "Tecw"
+      ]
+    },
+    {
+      "subject": "Info2",
+      "relatedTo": [
+        "Alg\u00e92",
+        "Aly2",
+        "CF"
+      ]
+    },
+    {
+      "subject": "StatD",
+      "relatedTo": [
+        "Alg\u00e92",
+        "Aly2",
+        "CF",
+        "His-s",
+        "Info2",
+        "Tecw"
+      ]
+    },
+    {
+      "subject": "STRM",
+      "relatedTo": [
+        "Alg\u00e92",
+        "Aly2",
+        "CF",
+        "His-s",
+        "Info2",
+        "StatD",
+        "Tecw"
+      ]
+    },
+    {
+      "subject": "Tecw",
+      "relatedTo": [
+        "Alg\u00e92",
+        "Aly2",
+        "CF",
+        "Info2"
+      ]
+    }
+  ]
+}

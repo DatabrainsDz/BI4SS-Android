@@ -13,7 +13,13 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/question"
+            android:layout_marginBottom="8dp"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,37 +28,61 @@
             android:text="@string/please_provide_your_information"
             android:textSize="22sp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="8dp">
+
+
         <RadioGroup
             android:id="@+id/profile_gender_radio_group"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="16dp"
+            android:gravity="center"
             android:orientation="horizontal">
-
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/male"/>
             <RadioButton
                 android:id="@+id/male_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/male"
-                android:textSize="18sp" />
-
+                android:textSize="18sp"
+                />
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/female"/>
             <RadioButton
                 android:id="@+id/female_radio_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/female"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:shadowColor="@color/myRed"
+                />
 
         </RadioGroup>
+
+        </LinearLayout>
 
         <Switch
             android:id="@+id/nationality_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="16dp"
-            android:text="@string/algerian" />
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
+            android:text= "@string/algerian"
+            android:shadowColor="@color/myRed"
+            />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -99,6 +129,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16sp"
+            android:textColor="@color/white"
+            android:background="@color/myRedTwo"
             android:text="@string/check" />
 
     </LinearLayout>
