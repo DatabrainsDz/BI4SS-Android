@@ -58,11 +58,11 @@ class GeneralActivity : AppCompatActivity(), Callback<StatisticsResponse> {
         val seriesOne = BarGraphSeries<DataPoint>(dataOne)
         val seriesTwo = BarGraphSeries<DataPoint>(dataTwo)
 
-        seriesOne.color = resources.getColor(R.color.myGreen)
+        seriesOne.color = resources.getColor(R.color.myBlue)
         seriesOne.isAnimated = true
         seriesOne.title = legendOne
 
-        seriesTwo.color = resources.getColor(R.color.myRed)
+        seriesTwo.color = resources.getColor(R.color.colorAccent)
         seriesTwo.isAnimated = true
         seriesTwo.title = legendTwo
 
